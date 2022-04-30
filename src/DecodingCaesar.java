@@ -1,13 +1,13 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class EncryptionCaesar {
+public class DecodingCaesar {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Укажите путь к файлу:");
+        System.out.println("Укажите путь к зашифрованному файлу:");
         String filePath = scanner.nextLine();//путь к файлу
-        System.out.println("Укажите путь для записи зашифрованного файла");
-        String fileEncrypted = scanner.nextLine();
+        System.out.println("Укажите путь для записи расшифрованного файла");
+        String fileEncrypted= scanner.nextLine();
         System.out.println("Укажите ключ к шифру:");
         int key = scanner.nextInt();//ключ к шифру Цезаря
         String fileReader = null;
@@ -17,11 +17,11 @@ public class EncryptionCaesar {
                 char[] fileCode = new char[fileReader.length()];
                 for (int i = 0; i < fileReader.length(); i++) {
                     if (Character.isLetter(fileReader.charAt(i)) && Character.isUpperCase(fileReader.charAt(i))) {
-                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'А' + key) % 33) + 'А');
+                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'А' - key) % 33) + 'А');
                     } else if (Character.isLetter(fileReader.charAt(i)) && Character.isLowerCase(fileReader.charAt(i))) {
-                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'а' + key) % 33) + 'а');
+                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'а' - key) % 33) + 'а');
                     } else
-                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - ' ' + key) % 33) + ' ');
+                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - ' ' - key) % 33) + ' ');
                 }
                 fileWriter.write(fileCode);
                 fileWriter.newLine();
