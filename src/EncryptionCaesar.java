@@ -17,11 +17,11 @@ public class EncryptionCaesar {
                 char[] fileCode = new char[fileReader.length()];
                 for (int i = 0; i < fileReader.length(); i++) {
                     if (Character.isLetter(fileReader.charAt(i)) && Character.isUpperCase(fileReader.charAt(i))) {
-                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'А' + key) % 33) + 'А');
+                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'А' + key) % 32) + 'А');
                     } else if (Character.isLetter(fileReader.charAt(i)) && Character.isLowerCase(fileReader.charAt(i))) {
-                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'а' + key) % 33) + 'а');
+                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - 'а' + key) % 32) + 'а');
                     } else
-                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - ' ' + key) % 33) + ' ');
+                        fileCode[i] = (char) (((int) (fileReader.charAt(i) - ' ' + key) % 32) + ' ');
                 }
                 fileWriter.write(fileCode);
                 fileWriter.newLine();
