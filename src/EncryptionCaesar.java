@@ -2,7 +2,10 @@ import java.io.*;
 import java.util.Scanner;
 
 public class EncryptionCaesar {
-    public static void path() {
+   // public static void path() {
+   public static void main(String[] args) {
+
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Укажите путь к файлу:");
         String filePath = scanner.nextLine();//путь к файлу
@@ -11,7 +14,7 @@ public class EncryptionCaesar {
         System.out.println("Укажите ключ к шифру:");
         int key = scanner.nextInt();//ключ к шифру Цезаря
     }
-    private void encription(String filePath, String fileEncrypted, int key) throws IOException {
+   // private void encription(String filePath, String fileEncrypted, int key) throws IOException {
         String fileReader = null;
         try (BufferedReader br = new BufferedReader(new FileReader((filePath)));
              BufferedWriter fileWriter = new BufferedWriter(new FileWriter(fileEncrypted))) {
