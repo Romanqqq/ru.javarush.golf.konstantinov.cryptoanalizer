@@ -13,7 +13,7 @@ public class EncryptionCaesar {
         String fileEncrypted = scanner.nextLine();
         System.out.println("Укажите ключ к шифру:");
         int key = scanner.nextInt();//ключ к шифру Цезаря
-    }
+
    // private void encription(String filePath, String fileEncrypted, int key) throws IOException {
         String fileReader = null;
         try (BufferedReader br = new BufferedReader(new FileReader((filePath)));
