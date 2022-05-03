@@ -3,15 +3,17 @@ import java.util.Scanner;
 
 public class DecodingCaesar {
 
-    public static void main(String[] args) throws IOException {
+    public  void decoding() throws IOException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Укажите путь к зашифрованному файлу:");
-        String filePath = scanner.nextLine();//путь к файлу
+        String filePath = scanner.nextLine();
         System.out.println("Укажите путь для записи расшифрованного файла:");
         String fileDecrypted = scanner.nextLine();
         System.out.println("Укажите ключ к шифру:");
-        int key = scanner.nextInt();//ключ к шифру Цезаря
+        int key = scanner.nextInt();
         String fileReader = null;
+
         try (BufferedReader br = new BufferedReader(new FileReader(filePath));
              BufferedWriter fileWriter = new BufferedWriter(new FileWriter(fileDecrypted))) {
             while ((fileReader = (br.readLine())) != null) {
@@ -28,15 +30,22 @@ public class DecodingCaesar {
                             fileCode[i] = fileReader.charAt(i);
                         }
                     } else
-                        fileCode[i] = (char) (((((int) (fileReader.charAt(i))) - ' ' - key) % 32) + ' ');
+                        fileCode[i] = (char) (((((int) (fileReader.charAt(i))) - 32 - key) % 63) + 32);
                 }
                 fileWriter.write(fileCode);
                 fileWriter.newLine();
                 fileWriter.flush();
-                //  System.out.println(fileCode);
             }
-        } catch (IOException exception) {
+        } catch (FileNotFoundException exception) {
+            System.out.println("По данному пути, файл отсутствует.");
+            System.out.println("Укажите путь к файлу!");
+            System.out.println("Что вы хотите сделать дальше?");
+            return;
+        } catch (IOException exception){
             exception.printStackTrace();
+            return;
         }
+        System.out.println("Файл расшифрован!");
+        System.out.println("Что вы хотите сделать дальше?");
     }
 }
