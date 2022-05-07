@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class StartCryptoanalizer {
+public class CryptoanalizerApplication {
     public static void main(String[] args) throws IOException {
         boolean cryptoanalizerWorks = true;
         Scanner scanner = new Scanner(System.in);
@@ -14,23 +14,20 @@ public class StartCryptoanalizer {
             System.out.println("4. Выход");
             int step = scanner.nextInt();
             switch (step) {
-                case 1:
+                case 1 -> {
                     EncryptionCaesar encryptionCaesar = new EncryptionCaesar();
                     encryptionCaesar.encryption();
-                    break;
-                case 2:
-                    DecodingCaesar decodingCaesar= new DecodingCaesar();
+                }
+                case 2 -> {
+                    DecodingCaesar decodingCaesar = new DecodingCaesar();
                     decodingCaesar.decoding();
-                    break;
-                case 3:
-                    BruteForce bruteForce=new BruteForce();
-                    bruteForce.analyzator();
-                    break;
-                case 4:
-                    cryptoanalizerWorks = false;
-                    break;
-                default:
-                    System.out.println("Выберите действие из указанных:");
+                }
+                case 3 -> {
+                    BruteForce bruteForce = new BruteForce();
+                    bruteForce.bruteForce();
+                }
+                case 4 -> cryptoanalizerWorks = false;
+                default -> System.out.println("Выберите действие из указанных:");
             }
         }
         scanner.close();
